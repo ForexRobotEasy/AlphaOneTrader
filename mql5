@@ -1,0 +1,121 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                         AlphaOneTrader          |
+//|                                Developer's Site: forexroboteasy.com   |
+//|                 Developer: Forex Robot Easy Team                   |
+//+------------------------------------------------------------------+
+
+// Global variables
+datetime lastTradeTime; // Last trade execution time
+bool tradeExecuted; // Flag to indicate if a trade has been executed
+
+//+------------------------------------------------------------------+
+//| Custom initialization function                                    |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Initialize global variables
+    lastTradeTime = 0;
+    tradeExecuted = false;
+
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Custom deinitialization function                                  |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Clean up resources and perform any necessary actions
+}
+
+//+------------------------------------------------------------------+
+//| Custom tick processing function                                   |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Check if enough time has passed since the last trade execution
+    if (TimeCurrent() - lastTradeTime <= 2 * 24 * 60 * 60) // 2 days
+        return;
+
+    // Check if tradeExecuted flag is set to true
+    if (tradeExecuted)
+        return;
+
+    // Execute trading strategies
+    // Strategy 1
+    if (strategy1())
+    {
+        tradeExecuted = true;
+        lastTradeTime = TimeCurrent();
+    }
+    // Strategy 2
+    else if (strategy2())
+    {
+        tradeExecuted = true;
+        lastTradeTime = TimeCurrent();
+    }
+    // Strategy 3
+    else if (strategy3())
+    {
+        tradeExecuted = true;
+        lastTradeTime = TimeCurrent();
+    }
+}
+
+//+------------------------------------------------------------------+
+//| Trading strategy 1                                               |
+//+------------------------------------------------------------------+
+bool strategy1()
+{
+    // Add your logic for strategy 1 here
+    // Return true if a trade is executed, false otherwise
+    // Example:
+    // if (condition1)
+    // {
+    //     // Execute trade
+    //     return true;
+    // }
+    // else
+    // {
+    //     return false;
+    // }
+}
+
+//+------------------------------------------------------------------+
+//| Trading strategy 2                                               |
+//+------------------------------------------------------------------+
+bool strategy2()
+{
+    // Add your logic for strategy 2 here
+    // Return true if a trade is executed, false otherwise
+    // Example:
+    // if (condition2)
+    // {
+    //     // Execute trade
+    //     return true;
+    // }
+    // else
+    // {
+    //     return false;
+    // }
+}
+
+//+------------------------------------------------------------------+
+//| Trading strategy 3                                               |
+//+------------------------------------------------------------------+
+bool strategy3()
+{
+    // Add your logic for strategy 3 here
+    // Return true if a trade is executed, false otherwise
+    // Example:
+    // if (condition3)
+    // {
+    //     // Execute trade
+    //     return true;
+    // }
+    // else
+    // {
+    //     return false;
+    // }
+}
